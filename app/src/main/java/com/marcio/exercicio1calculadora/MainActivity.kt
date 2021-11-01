@@ -14,31 +14,30 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         //Variáveis para os botões numéricos
-        var bt0 = findViewById<Button>(R.id.button0)
-
-        var bt1 = findViewById<Button>(R.id.button1)
-        var bt2 = findViewById<Button>(R.id.button2)
-        var bt3 = findViewById<Button>(R.id.button3)
-        var bt4 = findViewById<Button>(R.id.button4)
-        var bt5 = findViewById<Button>(R.id.button5)
-        var bt6 = findViewById<Button>(R.id.button6)
-        var bt7 = findViewById<Button>(R.id.button7)
-        var bt8 = findViewById<Button>(R.id.button8)
-        var bt9 = findViewById<Button>(R.id.button9)
+        val bt0 = findViewById<Button>(R.id.button0)
+        val bt1 = findViewById<Button>(R.id.button1)
+        val bt2 = findViewById<Button>(R.id.button2)
+        val bt3 = findViewById<Button>(R.id.button3)
+        val bt4 = findViewById<Button>(R.id.button4)
+        val bt5 = findViewById<Button>(R.id.button5)
+        val bt6 = findViewById<Button>(R.id.button6)
+        val bt7 = findViewById<Button>(R.id.button7)
+        val bt8 = findViewById<Button>(R.id.button8)
+        val bt9 = findViewById<Button>(R.id.button9)
 
         //Variavel para a exibição do Visor da Calculadora
-        var visor = findViewById<TextView>(R.id.visor)
+        val visor = findViewById<TextView>(R.id.visor)
 
         //Variaveis para os botões de funções
-        var btAC = findViewById<Button>(R.id.button_ac)
-        var btVirgula = findViewById<Button>(R.id.buttonVirgula)
-        var btMais = findViewById<Button>(R.id.buttonMais)
-        var btMenos = findViewById<Button>(R.id.buttonMenos)
-        var btMultiplicacao = findViewById<Button>(R.id.buttonMultiplicacao)
-        var btDivisao = findViewById<Button>(R.id.buttonDivisao)
-        var btPorcentagem = findViewById<Button>(R.id.buttonPercentual)
-        var btMaisMenos = findViewById<Button>(R.id.buttonMaisMenos)
-        var btCalcula = findViewById<Button>(R.id.buttonCalcular)
+        val btAC = findViewById<Button>(R.id.button_ac)
+        val btVirgula = findViewById<Button>(R.id.buttonVirgula)
+        val btMais = findViewById<Button>(R.id.buttonMais)
+        val btMenos = findViewById<Button>(R.id.buttonMenos)
+        val btMultiplicacao = findViewById<Button>(R.id.buttonMultiplicacao)
+        val btDivisao = findViewById<Button>(R.id.buttonDivisao)
+        val btPorcentagem = findViewById<Button>(R.id.buttonPercentual)
+        val btMaisMenos = findViewById<Button>(R.id.buttonMaisMenos)
+        val btCalcula = findViewById<Button>(R.id.buttonCalcular)
 
 
         var valorStr = ""
@@ -46,11 +45,9 @@ class MainActivity : AppCompatActivity() {
         var fecha = 0
         var resultado = 0.0
 
+        //Formata a saída do número com separador de milhar e casas decimais
         //var dec = DecimalFormat("#,##0.00")
-        var dec = DecimalFormat("#,###.#######")
-
-
-
+        val dec = DecimalFormat("#,###.#######")
 
 
         btCalcula.setOnClickListener {

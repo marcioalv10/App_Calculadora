@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Exercicio1Calculadora2.0</string>
+    <string name="button_ac">AC</string>
+    <string name="button_mais_menos">+/-</string>
+    <string name="button_mais">+</string>
+    <string name="button_porcentual">%</string>
+    <string name="button_divisao">÷</string>
+
+    <string name="value1">1</string>
+    <string name="value2">2</string>
+    <string name="value3">3</string>
+    <string name="value4">4</string>
+    <string name="value5">5</string>
+    <string name="value6">6</string>
+    <string name="value7">7</string>
+    <string name="value8">8</string>
+    <string name="value9">9</string>
+    <string name="value0">0</string>
+    <string name="button_multiplicacao">x</string>
+    <string name="button_menos">-</string>
+    <string name="button_virgula">.</string>
+    <string name="button_igual">=</string>
+</resources>

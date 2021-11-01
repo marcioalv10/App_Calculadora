@@ -47,10 +47,10 @@ class MainActivity : AppCompatActivity() {
 
         //Formata a saída do número com separador de milhar e casas decimais
         //var dec = DecimalFormat("#,##0.00")
-        val dec = DecimalFormat("#,###.#######")
+        var dec = DecimalFormat("#,###.#######")
 
+        fun calcular() {
 
-        btCalcula.setOnClickListener {
             //Implementando com o when
             if (!valorStr.isEmpty() && !visor.text.equals("-"))
                 when (sinal) {
@@ -70,10 +70,20 @@ class MainActivity : AppCompatActivity() {
             valorStr = ""
             sinal = ""
 
-            Log.i("Analisa c-valorStr: ", valorStr)
-            Log.i("Analisa c-visor: ", visor.text.toString())
-            Log.i("Analisa c-resultado: ", resultado.toString())
 
+        }
+
+        fun somar() {
+            /*resultado = num1 + num2
+            visor.text = dec.format(resultado)*/
+            calcular()
+
+        }
+
+
+
+        btCalcula.setOnClickListener {
+            calcular()
         }
 
         btMaisMenos.setOnClickListener {
@@ -107,8 +117,8 @@ class MainActivity : AppCompatActivity() {
 
         btMais.setOnClickListener {
             if (!valorStr.isEmpty() && !visor.text.equals("-")) {
-                resultado += valorStr.toDouble()
-
+                //resultado += valorStr.toDouble()
+                calcular()
             }
             valorStr = ""
             sinal = "+"
@@ -117,33 +127,21 @@ class MainActivity : AppCompatActivity() {
         btMenos.setOnClickListener {
 
 
-            Log.i("Analisa a-valorStr: ", valorStr)
-            Log.i("Analisa a-visor: ", visor.text.toString())
-            Log.i("Analisa a-resultado: ", resultado.toString())
-
-
             if (!valorStr.isEmpty() && !visor.text.equals("-")) {
-                resultado += valorStr.toDouble()
-
-                Log.i("Analisa d-valorStr: ", valorStr)
-                Log.i("Analisa d-visor: ", visor.text.toString())
-                Log.i("Analisa d-resultado: ", resultado.toString())
-
+                // resultado += valorStr.toDouble()
+                calcular()
 
             }
+
             valorStr = ""
             sinal = "-"
-
-
-            Log.i("Analisa e-valorStr: ", valorStr)
-            Log.i("Analisa e-visor: ", visor.text.toString())
-            Log.i("Analisa e-resultado: ", resultado.toString())
 
         }
 
         btMultiplicacao.setOnClickListener {
             if (!valorStr.isEmpty() && !visor.text.equals("-")) {
-                resultado += valorStr.toDouble()
+                // resultado += valorStr.toDouble()
+                calcular()
             }
             valorStr = ""
             sinal = "*"
@@ -151,7 +149,8 @@ class MainActivity : AppCompatActivity() {
 
         btDivisao.setOnClickListener {
             if (!valorStr.isEmpty() && !visor.text.equals("-")) {
-                resultado += valorStr.toDouble()
+                // resultado += valorStr.toDouble()
+                calcular()
             }
             valorStr = ""
             sinal = ":"
@@ -188,6 +187,7 @@ class MainActivity : AppCompatActivity() {
             visor.text = valorStr
             fecha = 0
         }
+
 
         //Preenchendo os algorismos
 
@@ -236,6 +236,7 @@ class MainActivity : AppCompatActivity() {
             valorStr = ""
             resultado = 0.0
             fecha++
+            sinal = "AC"
 
             if (fecha >= 2) {
                 visor.text = ""
@@ -246,7 +247,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         btAC.setOnLongClickListener {
+
             Toast.makeText(this, "Ops", Toast.LENGTH_SHORT).show()
+
+
             return@setOnLongClickListener true
         }
 

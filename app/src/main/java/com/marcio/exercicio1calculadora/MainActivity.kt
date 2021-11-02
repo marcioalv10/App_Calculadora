@@ -1,7 +1,6 @@
 package com.marcio.exercicio1calculadora
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -39,12 +38,12 @@ class MainActivity : AppCompatActivity() {
         val btMaisMenos = findViewById<Button>(R.id.buttonMaisMenos)
         val btCalcula = findViewById<Button>(R.id.buttonCalcular)
 
-
         var valorStr = ""
         var sinal = ""
         var fecha = 0
         var resultado = 0.0
         var mode = 1
+        var temp = ""
 
         //Formata a saída do número com separador de milhar e casas decimais
         //var dec = DecimalFormat("#,##0.00")
@@ -62,7 +61,6 @@ class MainActivity : AppCompatActivity() {
                     //  "+-" -> valorStr = ""
                     // "P" -> resultado *= valorStr.toDouble()
                     else -> resultado = valorStr.toDouble()
-
                 }
 
             // visor.text = resultado.toString()
@@ -70,17 +68,7 @@ class MainActivity : AppCompatActivity() {
 
             valorStr = ""
             sinal = ""
-
-
         }
-
-        fun somar() {
-            /*resultado = num1 + num2
-            visor.text = dec.format(resultado)*/
-            calcular()
-
-        }
-
 
 
         btCalcula.setOnClickListener {
@@ -89,7 +77,6 @@ class MainActivity : AppCompatActivity() {
 
         btMaisMenos.setOnClickListener {
 
-            //  if (!valorStr.isEmpty()) {
             if (!valorStr.equals("") && !visor.text.equals("") && !visor.text.equals("-")) {
                 valorStr = (valorStr.toDouble() * -1).toString()
                 //  visor.text = valorStr
@@ -105,11 +92,11 @@ class MainActivity : AppCompatActivity() {
             //valorStr = ""
             // sinal = "+-"
 
-            if (fecha > 3 && fecha < 7) {
-                Toast.makeText(this, "Você está a ${7 - fecha} passos de exibir o nome do desenvolvedor", Toast.LENGTH_SHORT).show()
+            if (fecha > 6 && fecha < 10) {
+                Toast.makeText(this, "Você está a ${10 - fecha} passos de exibir o nome do desenvolvedor", Toast.LENGTH_SHORT).show()
             }
 
-            if (fecha == 7) {
+            if (fecha == 10) {
                 visor.text = "Márcio"
                 valorStr = ""
                 fecha = 1
@@ -165,7 +152,6 @@ class MainActivity : AppCompatActivity() {
                     // valorStr = dec.format((valorStr.toDouble() / 100) * resultado)
                     // visor.text = valorStr
                     visor.text = dec.format(valorStr.toDouble())
-
                 }
             } else {
                 if (!valorStr.isEmpty() && !visor.text.equals("-")) {
@@ -174,7 +160,6 @@ class MainActivity : AppCompatActivity() {
                     visor.text = dec.format(valorStr.toDouble())
                 }
             }
-
         }
 
         //Função que preenche o algorismo
@@ -186,9 +171,9 @@ class MainActivity : AppCompatActivity() {
                 valorStr = algo
             }
             visor.text = valorStr
+
             fecha = 0
         }
-
 
         //Preenchendo os algorismos
 
@@ -242,7 +227,6 @@ class MainActivity : AppCompatActivity() {
             if (fecha >= 2) {
                 visor.text = ""
                 fecha = 0
-
             }
 
         }
@@ -255,36 +239,40 @@ class MainActivity : AppCompatActivity() {
                     dec = DecimalFormat("#,##0.00")
                     mode = 2
                 }
-                2 ->{
+                2 -> {
                     Toast.makeText(this, "modo Calculadora padrão ativado", Toast.LENGTH_SHORT).show()
                     dec = DecimalFormat("#,###.#######")
                     mode = 1
                 }
 
             }
-
-
             return@setOnLongClickListener true
         }
-
-
 
         btVirgula.setOnClickListener {
 
             if (valorStr.isEmpty()) {
-                visor.text = "0"
-                valorStr += visor.text
+                //visor.text = "0"
+                temp = "0"
+                //valorStr += visor.text
+                valorStr += temp
                 visor.text = valorStr
             }
 
-            if (!visor.text.contains(".")) {
+            //valorStr -> visor.text
+            if (!valorStr.contains(".")) {
 
-                visor.text = "."
-                valorStr += visor.text
-                visor.text = valorStr
+                if (!visor.text.equals("-")) {
+
+                    //visor.text = "."
+                    temp = "."
+                    // valorStr += visor.text
+                    valorStr += temp
+                    visor.text = valorStr
+                }
+
 
             }
-
 
         }
 

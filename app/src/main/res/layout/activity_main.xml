@@ -14,7 +14,7 @@
     android:layout_height="220dp"
     android:text="0"
     android:textColor="@color/white"
-    android:textSize="70sp"
+    android:textSize="65sp"
     android:fontFamily="@font/sfuidisplayregular"
     android:gravity="right|bottom"
     android:paddingRight="20dp"

@@ -4,9 +4,13 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#333333</color>
+    <color name="gray_efect">#bbbbbb</color>
     <color name="light_gray">#a5a5a5</color>
+    <color name="light_gray_efect">#fefefe</color>
     <color name="orange">#f1a33c</color>
     <color name="lilas">#bb11bb</color>
+    <color name="lilas_efect">#ff88ff</color>
+
 
 
 

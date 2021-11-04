@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:state_pressed="true"
+        android:color="@color/light_gray_efect"/>
+
+
+    <item android:state_focused="true"
+        android:color="#ff36ff33"
+
+
+        /> <!-- focused -->
+    <item android:color="@color/light_gray"/>
+    <item android:state_activated="true"
+        android:color="@color/orange"
+        />
+</selector>

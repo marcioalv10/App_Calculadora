@@ -1,6 +1,7 @@
 package com.marcio.exercicio1calculadora
 
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
@@ -36,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         val btDivisao = findViewById<Button>(R.id.buttonDivisao)
         val btPorcentagem = findViewById<Button>(R.id.buttonPercentual)
         val btMaisMenos = findViewById<Button>(R.id.buttonMaisMenos)
-        val btCalcula = findViewById<Button>(R.id.buttonCalcular)
+        val btCalcular = findViewById<Button>(R.id.buttonCalcular)
 
         var valorStr = ""
         var sinal = ""
@@ -54,13 +55,13 @@ class MainActivity : AppCompatActivity() {
             //Implementando com o when
             if (!valorStr.isEmpty() && !visor.text.equals("-"))
                 when (sinal) {
-                    "+" -> resultado += valorStr.toDouble()
-                    "-" -> resultado -= valorStr.toDouble()
-                    "*" -> resultado *= valorStr.toDouble()
-                    ":" -> resultado /= valorStr.toDouble()
+                    "+" -> resultado += valorStr.replace(",", ".").toDouble()
+                    "-" -> resultado -= valorStr.replace(",", ".").toDouble()
+                    "*" -> resultado *= valorStr.replace(",", ".").toDouble()
+                    ":" -> resultado /= valorStr.replace(",", ".").toDouble()
                     //  "+-" -> valorStr = ""
                     // "P" -> resultado *= valorStr.toDouble()
-                    else -> resultado = valorStr.toDouble()
+                    else -> resultado = valorStr.replace(",", ".").toDouble()
                 }
 
             // visor.text = resultado.toString()
@@ -71,22 +72,35 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        btCalcula.setOnClickListener {
+        btCalcular.setOnClickListener {
             calcular()
         }
 
         btMaisMenos.setOnClickListener {
 
-            if (!valorStr.equals("") && !visor.text.equals("") && !visor.text.equals("-")) {
-                valorStr = (valorStr.toDouble() * -1).toString()
+            Log.i("avalia valorStr: ", valorStr)
+            Log.i("avalia visor: ", visor.text.toString())
+            Log.i("avalia resultado: ", resultado.toString())
+
+            if (!valorStr.equals("") && !valorStr.equals("0") && !visor.text.equals("") && !visor.text.equals("-")) {
+                valorStr = (valorStr.replace(",", ".").toDouble() * -1).toString()
                 //  visor.text = valorStr
+
                 visor.text = dec.format(valorStr.toDouble())
                 // resultado += valorStr.toDouble()
+
+                Log.i("avalia 2 valorStr: ", valorStr)
+                Log.i("avalia 2 visor: ", visor.text.toString())
+                Log.i("avalia 2 resultado: ", resultado.toString())
+
 
             } else {
                 valorStr = "-"
                 visor.text = valorStr
 
+                Log.i("avalia 3 valorStr: ", valorStr)
+                Log.i("avalia 3 visor: ", visor.text.toString())
+                Log.i("avalia 3 resultado: ", resultado.toString())
                 fecha++
             }
             //valorStr = ""
@@ -148,14 +162,14 @@ class MainActivity : AppCompatActivity() {
             if (sinal == "+" || sinal == "-") {
                 if (!valorStr.isEmpty()) {
 
-                    valorStr = ((valorStr.toDouble() / 100) * resultado).toString()
+                    valorStr = ((valorStr.replace(",", ".").toDouble() / 100) * resultado).toString()
                     // valorStr = dec.format((valorStr.toDouble() / 100) * resultado)
                     // visor.text = valorStr
                     visor.text = dec.format(valorStr.toDouble())
                 }
             } else {
                 if (!valorStr.isEmpty() && !visor.text.equals("-")) {
-                    valorStr = ((valorStr.toDouble() / 100)).toString()
+                    valorStr = ((valorStr.replace(",", ".").toDouble() / 100)).toString()
                     //visor.text = valorStr
                     visor.text = dec.format(valorStr.toDouble())
                 }
@@ -165,7 +179,7 @@ class MainActivity : AppCompatActivity() {
         //Função que preenche o algorismo
 
         fun preenche(algo: String) {
-            if (!valorStr.equals("0")) {
+            if (!valorStr.equals("0") && !valorStr.contains(".")) {
                 valorStr += algo
             } else {
                 valorStr = algo
@@ -260,12 +274,12 @@ class MainActivity : AppCompatActivity() {
             }
 
             //valorStr -> visor.text
-            if (!valorStr.contains(".")) {
+            if (!valorStr.contains(",") && !valorStr.contains(".")) {
 
                 if (!visor.text.equals("-")) {
 
                     //visor.text = "."
-                    temp = "."
+                    temp = ","
                     // valorStr += visor.text
                     valorStr += temp
                     visor.text = valorStr
